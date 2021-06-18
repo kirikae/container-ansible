@@ -1,4 +1,4 @@
-FROM ubi8/ubi-minimal
+FROM registry.access.redhat.com/ubi8/ubi-minimal
 
 RUN microdnf update -y \
   && microdnf install -y python3
