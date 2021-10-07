@@ -3,7 +3,7 @@ RUN mkdir -p /mnt/rootfs
 RUN yum repolist
 RUN yum install\
  coreutils-single glibc-minimal-langpack\
- python38\
+ python38 libgcc vim\
  --installroot /mnt/rootfs\
  --releasever 8\
  --setopt=module_platform_id=platform:el8\

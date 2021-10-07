@@ -3,7 +3,7 @@ RUN mkdir -p /mnt/rootfs
 RUN yum repolist
 RUN yum install\
  coreutils-single glibc-minimal-langpack\
- python38\
+ python38 libgcc vim\
  --installroot /mnt/rootfs\
  --releasever 8\
  --setopt=module_platform_id=platform:el8\
@@ -25,9 +25,9 @@ LABEL description="A basic container for executing Ansible. Should usually be ru
 COPY --from=container-ansible-build /mnt/rootfs/ /
 RUN python3 get-pip.py
 RUN rm get-pip.py
-RUN python3 -m pip --no-cache-dir install setuptools-rust wheel
-RUN python3 -m pip --no-cache-dir install ansible paramiko "pywinrm>=0.3.0" netaddr
-RUN python3 -m pip --no-cache-dir uninstall setuptools-rust wheel pip -y
+RUN python3 -m pip install setuptools-rust wheel
+RUN python3 -m pip install ansible paramiko "pywinrm>=0.3.0" netaddr
+RUN python3 -m pip uninstall setuptools-rust wheel pip -y
 
 WORKDIR /ansible
 VOLUME /ansible
